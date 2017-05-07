@@ -1,0 +1,23 @@
+FROM debian:jessie
+MAINTAINER Jean-Avit Promis "docker@katagena.com"
+LABEL org.label-schema.vcs-url="https://github.com/nouchka/docker-ansible"
+LABEL version="latest"
+
+RUN export uid=1000 gid=1000 && \
+	mkdir -p /home/developer && \
+	echo "developer:x:${uid}:${gid}:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
+	echo "developer:x:${uid}:" >> /etc/group && \
+	chown ${uid}:${gid} -R /home/developer
+
+RUN echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main" >> /etc/apt/sources.list
+
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367 && \
+	apt-get update --fix-missing && \
+	apt-get install -y -q ansible python-pip && \
+	pip install 'dopy>=0.3.5,<=0.3.5'
+
+RUN ansible-galaxy install atosatto.docker-swarm
+
+WORKDIR /home/developer/config/
+USER developer
+ENTRYPOINT [ "ansible" ]
