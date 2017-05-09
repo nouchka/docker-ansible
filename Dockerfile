@@ -16,7 +16,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367 &&
 	apt-get install -y -q ansible python-pip && \
 	pip install 'dopy>=0.3.5,<=0.3.5'
 
-RUN ansible-galaxy install atosatto.docker-swarm
+RUN ansible-galaxy install atosatto.docker-swarm franklinkim.docker-compose
 
 WORKDIR /home/developer/config/
 USER developer
