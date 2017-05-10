@@ -24,4 +24,5 @@ RUN ansible-galaxy install atosatto.docker-swarm franklinkim.docker-compose
 
 WORKDIR /home/developer/config/
 USER developer
+
 CMD [ "ansible-playbook", "--version" ]
