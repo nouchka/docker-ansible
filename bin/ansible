@@ -1,0 +1,10 @@
+#!/bin/bash
+
+[ -f "hosts" ] || exit 1
+
+docker run -it --rm \
+	-v $HOME/.ssh/id_rsa:/home/developer/.ssh/id_rsa \
+	-v $HOME/.ssh/id_rsa.pub:/home/developer/.ssh/id_rsa.pub \
+	-v $(pwd):/home/developer/config \
+	nouchka/ansible \
+	`basename $0` -i hosts "$@"
