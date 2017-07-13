@@ -20,7 +20,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ${ANSIBLE_REPOSITOR
 	apt-get install -y -q ansible python-pip && \
 	pip install 'dopy>=0.3.5,<=0.3.5'
 
-RUN ansible-galaxy install atosatto.docker-swarm franklinkim.docker-compose
+RUN ansible-galaxy install atosatto.docker-swarm franklinkim.docker-compose kbrebanov.easy_rsa
 
 WORKDIR /home/developer/config/
 USER developer
