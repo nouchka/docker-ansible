@@ -17,7 +17,7 @@ RUN echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main" >> /e
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ${ANSIBLE_REPOSITORY_KEY} && \
 	apt-get update --fix-missing && \
-	apt-get install -y -q ansible python-pip && \
+	apt-get install -y -q ansible python-pip rsync && \
 	pip install 'dopy>=0.3.5,<=0.3.5'
 
 RUN ansible-galaxy install atosatto.docker-swarm franklinkim.docker-compose kbrebanov.easy_rsa
