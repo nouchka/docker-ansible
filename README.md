@@ -6,10 +6,6 @@
 [![](https://images.microbadger.com/badges/version/nouchka/ansible.svg)](https://microbadger.com/images/nouchka/ansible "Get your own version badge on microbadger.com")
 [![Docker Automated buil](https://img.shields.io/docker/automated/nouchka/ansible.svg)](https://hub.docker.com/r/nouchka/ansible/)
 [![Build Status](https://travis-ci.org/nouchka/docker-ansible.svg?branch=master)](https://travis-ci.org/nouchka/docker-ansible)
-<!---
-[![Docker Stars](https://img.shields.io/docker/stars/nouchka/docker-ansible.svg)](https://hub.docker.com/r/nouchka/ansible/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/nouchka/docker-ansible.svg)]()
---->
 
 # Versions
 
