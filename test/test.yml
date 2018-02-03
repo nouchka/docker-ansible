@@ -1,0 +1,8 @@
+- hosts:
+    - eric
+  remote_user: root
+  gather_facts: no
+  pre_tasks:
+    - name: ping all
+      ping:
+      become: true

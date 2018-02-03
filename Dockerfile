@@ -17,7 +17,6 @@ RUN export uid=1000 gid=1000 && \
 	apt-get update --fix-missing && \
 	apt-get install -y -q ansible python-pip rsync && \
 	pip install 'dopy>=0.3.5,<=0.3.5' && \
-	ansible-galaxy install atosatto.docker-swarm franklinkim.docker-compose kbrebanov.easy_rsa -p /etc/ansible/roles/ && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /home/developer/config/
