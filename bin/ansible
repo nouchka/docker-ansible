@@ -1,8 +1,9 @@
 #!/bin/bash
 
 [ -f "hosts" ] || exit 1
+[ ! -f "$HOME/.env" ] || ENV_FILE="--env-file $HOME/.env"
 
-docker run -it --rm \
+docker run -it --rm $ENV_FILE \
 	-v $HOME/.ssh/:/home/developer/.ssh/ \
 	-v $HOME/.ansible/:/etc/ansible/ \
 	-v $HOME/.env:/home/developer/.env:ro \

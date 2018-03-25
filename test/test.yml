@@ -2,7 +2,11 @@
     - eric
   remote_user: root
   gather_facts: no
+  vars:
+    test: "{{ lookup('env', 'WIFI_PASSWORD') }}"
   pre_tasks:
     - name: ping all
       ping:
       become: true
+    - debug:
+        msg: "Test env: {{ test }}"
