@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+LATEST_VERSION="2.6"
+
+if [ "$DOCKER_TAG" = "latest" ]; then
+	ANSIBLEVERSION=$LATEST_VERSION
+else
+	ANSIBLEVERSION=$DOCKER_TAG
+fi
+
+if [ "$ANSIBLEVERSION" = "2.7" ]; then
+	BASE_IMAGE=stretch
+else
+	BASE_IMAGE=jessie
+fi
+
+docker build -t ${IMAGE_NAME} \
+	--build-arg=BASE_IMAGE=$BASE_IMAGE \
+	--build-arg=ANSIBLEVERSION=$ANSIBLEVERSION \
+	--build-arg=DOCKER_TAG=$DOCKER_TAG \
+	.
