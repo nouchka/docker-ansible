@@ -3,8 +3,9 @@ IMAGE_NAME=nouchka/ansible
 
 install:
 	install bin/ansible $(prefix)/bin/ansible
-	ln -s $(prefix)/bin/ansible $(prefix)/bin/ansible-playbook
-	ln -s $(prefix)/bin/ansible $(prefix)/bin/ansible-galaxy
+	ln -sfn $(prefix)/bin/ansible $(prefix)/bin/ansible-playbook
+	ln -sfn $(prefix)/bin/ansible $(prefix)/bin/ansible-galaxy
+	install bin/ansible-vault $(prefix)/bin/ansible-vault
 
 symbolinks_test:
 	cd bin/ && ln -s ansible ansible-playbook && ln -s ansible ansible-galaxy
