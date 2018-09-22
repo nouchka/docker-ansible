@@ -27,6 +27,9 @@ build-deb: deb
 	.
 	rm -rf build/
 
+push-deb: build-deb
+	package_cloud push nouchka/home/ubuntu/xenial $(NAME)_*.deb
+
 symbolinks_test:
 	cd bin/ && ln -s ansible ansible-playbook && ln -s ansible ansible-galaxy
 	cd test/ && ls -al
