@@ -19,9 +19,11 @@ RUN export uid=1000 gid=1000 && \
 	echo "deb http://ppa.launchpad.net/ansible/ansible-${ANSIBLEVERSION}/ubuntu trusty main" >> /etc/apt/sources.list && \
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys "${APT_KEY}" && \
 	apt-get update --fix-missing && \
-	apt-get install -y -q ansible python-pip rsync vim && \
+	apt-get install -y -q ansible python rsync vim && \
+	easy_install pip && \
 	pip install 'dopy>=0.3.5,<=0.3.5' && \
-	pip install docker-py && \
+	pip install docker && \
+	pip install 'docker-py>=1.7.0' && \
 	pip install google-auth && \
 	pip install boto && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
