@@ -22,8 +22,6 @@ RUN export uid=1000 gid=1000 && \
 	apt-get install -y -q ansible python rsync vim && \
 	easy_install pip && \
 	pip install 'dopy>=0.3.5,<=0.3.5' && \
-	pip install docker && \
-	pip install 'docker-py>=1.7.0' && \
 	pip install google-auth && \
 	pip install boto && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
