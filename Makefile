@@ -18,6 +18,7 @@ deb:
 	cp -Rf bin/* build/usr/sbin/
 	cp bin/ansible build/usr/sbin/ansible-playbook
 	cp bin/ansible build/usr/sbin/ansible-galaxy
+	cp bin/ansible-vault build/usr/sbin/ansible-lint
 
 build-deb: deb
 	rm -f $(NAME)_$(VERSION).$(TRAVIS_BUILD_NUMBER)_amd64.deb
@@ -41,6 +42,7 @@ build-version:
 	@chmod +x ./hooks/build
 	DOCKER_TAG=$(VERSION) IMAGE_NAME=$(DOCKER_NAMESPACE)/$(DOCKER_IMAGE):$(VERSION) ./hooks/build
 
+.PHONY: build
 build:
 	$(MAKE) -s build-version VERSION=latest
 	$(MAKE) -s build-version VERSION=2.4
@@ -56,3 +58,4 @@ install:
 	ln -sfn $(prefix)/bin/ansible $(prefix)/bin/ansible-playbook
 	ln -sfn $(prefix)/bin/ansible $(prefix)/bin/ansible-galaxy
 	install bin/ansible-vault $(prefix)/bin/ansible-vault
+	ln -sfn $(prefix)/bin/ansible-vault $(prefix)/bin/ansible-lint

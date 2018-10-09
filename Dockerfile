@@ -24,9 +24,11 @@ RUN export uid=1000 gid=1000 && \
 	pip install 'dopy>=0.3.5,<=0.3.5' && \
 	pip install google-auth && \
 	pip install boto && \
+	pip install ansible-lint && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /home/developer/config/
 USER developer
 
 CMD [ "ansible-playbook", "--version" ]
+
