@@ -45,9 +45,10 @@ build-version:
 .PHONY: build
 build:
 	$(MAKE) -s build-version VERSION=latest
+        $(MAKE) -s build-version VERSION=2.7
+        $(MAKE) -s build-version VERSION=2.6
+        $(MAKE) -s build-version VERSION=2.5
 	$(MAKE) -s build-version VERSION=2.4
-	$(MAKE) -s build-version VERSION=2.5
-	$(MAKE) -s build-version VERSION=2.6
 
 .PHONY: test
 test:
