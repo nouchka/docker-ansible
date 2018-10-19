@@ -16,17 +16,17 @@ RUN export uid=1000 gid=1000 && \
 	echo "developer:x:${uid}:${gid}:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
 	echo "developer:x:${uid}:" >> /etc/group && \
 	chown ${uid}:${gid} -R /home/developer && \
-        apt-get update --fix-missing && \
-        apt-get install -y -q gnupg && \
+	apt-get update --fix-missing && \
+	apt-get install -y -q --no-install-recommends gnupg=* dirmngr=* && \
 	echo "deb http://ppa.launchpad.net/ansible/ansible-${ANSIBLEVERSION}/ubuntu trusty main" >> /etc/apt/sources.list && \
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys "${APT_KEY}" && \
 	apt-get update --fix-missing && \
-	apt-get install -y -q ansible python rsync vim gnupg && \
+	apt-get install -y -q --no-install-recommends ansible=${ANSIBLEVERSION}.* python=* rsync=* vim=* && \
 	easy_install pip && \
 	pip install 'dopy>=0.3.5,<=0.3.5' && \
-	pip install google-auth && \
-	pip install boto && \
-	pip install ansible-lint && \
+	pip install google-auth>=1.3.0 && \
+	pip install boto>=2 && \
+	pip install ansible-lint>=1 && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /home/developer/config/
