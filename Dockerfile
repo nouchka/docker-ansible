@@ -21,7 +21,7 @@ RUN export uid=1000 gid=1000 && \
 	echo "deb http://ppa.launchpad.net/ansible/ansible-${ANSIBLEVERSION}/ubuntu trusty main" >> /etc/apt/sources.list && \
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys "${APT_KEY}" && \
 	apt-get update --fix-missing && \
-	apt-get install -y -q --no-install-recommends ansible=${ANSIBLEVERSION}.* python=* rsync=* vim=* && \
+	apt-get install -y -q --no-install-recommends ansible=${ANSIBLEVERSION}.* python=* rsync=* vim=* openssh-client=* && \
 	easy_install pip && \
 	pip install 'dopy>=0.3.5,<=0.3.5' && \
 	pip install google-auth>=1.3.0 && \
