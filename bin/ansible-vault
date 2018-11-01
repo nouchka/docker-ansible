@@ -1,6 +1,12 @@
 #!/bin/bash
 
+EXECUTABLE=$(basename $0| sed 's/[0-9*.]//g')
+VERSION=$(basename $0| sed 's/[a-z-]//g')
+if [ "$VERSION" == "" ] || [ ! "$VERSION" ]; then
+	VERSION="latest"
+fi
+
 docker run -it --rm \
 	-v $(pwd):/home/developer/config \
-	nouchka/ansible \
-	`basename $0` "$@"
+	nouchka/ansible:$VERSION \
+	$EXECUTABLE "$@"

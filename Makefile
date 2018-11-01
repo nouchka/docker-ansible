@@ -12,6 +12,9 @@ prefix = /usr/local
 
 .DEFAULT_GOAL := build
 
+VERSIONS=2.7 2.6 2.5 2.4
+DEBVERSIONS=2.6
+
 deb:
 	mkdir -p build/
 	mkdir -p build/usr/sbin/
@@ -19,6 +22,11 @@ deb:
 	cp bin/ansible build/usr/sbin/ansible-playbook
 	cp bin/ansible build/usr/sbin/ansible-galaxy
 	cp bin/ansible-vault build/usr/sbin/ansible-lint
+	$(foreach version,$(DEBVERSIONS), cp bin/ansible build/usr/sbin/ansible$(version);)
+	$(foreach version,$(DEBVERSIONS), cp bin/ansible build/usr/sbin/ansible-playbook$(version);)
+	$(foreach version,$(DEBVERSIONS), cp bin/ansible build/usr/sbin/ansible-galaxy$(version);)
+	$(foreach version,$(DEBVERSIONS), cp bin/ansible-vault build/usr/sbin/ansible-vault$(version);)
+	$(foreach version,$(DEBVERSIONS), cp bin/ansible-vault build/usr/sbin/ansible-lint$(version);)
 
 build-deb: deb
 	rm -f $(NAME)_$(VERSION).$(TRAVIS_BUILD_NUMBER)_amd64.deb
@@ -45,10 +53,7 @@ build-version:
 .PHONY: build
 build:
 	$(MAKE) -s build-version VERSION=latest
-	$(MAKE) -s build-version VERSION=2.7
-	$(MAKE) -s build-version VERSION=2.6
-	$(MAKE) -s build-version VERSION=2.5
-	$(MAKE) -s build-version VERSION=2.4
+	$(foreach version,$(VERSIONS), $(MAKE) -s build-version VERSION=$(version);)
 
 .PHONY: test
 test:
