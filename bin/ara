@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[ ! -d "$HOME/.ara/" ] || ARA_DIRECTORY="-v $HOME/.ara/:/home/developer/.ara/"
+[ ! -d "$HOME/.config/ara/" ] || ARA_DIRECTORY="-v $HOME/.config/ara/:/home/developer/.ara/"
 
 EXECUTABLE=$(basename $0| sed 's/[0-9*.]//g')
 VERSION=$(basename $0| sed 's/[a-z-]//g')
