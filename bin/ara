@@ -1,7 +1,5 @@
 #!/bin/bash
 
-[ -f "hosts" ] || exit 1
-[ ! -f "$HOME/.env" ] || ENV_FILE="--env-file $HOME/.env"
 [ ! -d "$HOME/.ara/" ] || ARA_DIRECTORY="-v $HOME/.ara/:/home/developer/.ara/"
 
 EXECUTABLE=$(basename $0| sed 's/[0-9*.]//g')
@@ -10,10 +8,7 @@ if [ "$VERSION" == "" ] || [ ! "$VERSION" ]; then
 	VERSION="latest"
 fi
 
-docker run -it --rm $ENV_FILE $ARA_DIRECTORY\
-	-v $HOME/.ssh/:/home/developer/.ssh/ \
-	-v $HOME/.ansible/:/etc/ansible/ \
-	-v $HOME/.env:/home/developer/.env:ro \
+docker run -it --rm $ARA_DIRECTORY\
 	-v $(pwd):/home/developer/config \
 	nouchka/ansible:$VERSION \
-	$EXECUTABLE -i hosts "$@"
+	$EXECUTABLE "$@"
