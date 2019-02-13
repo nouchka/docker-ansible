@@ -1,6 +1,10 @@
 #!/bin/bash
 
-[ -f "hosts" ] || exit 1
+if [ -f "hosts" ]; then
+	INVENTORY=" -i hosts"
+else
+	INVENTORY=""
+fi
 [ ! -f "$HOME/.env" ] || ENV_FILE="--env-file $HOME/.env"
 [ ! -d "$HOME/.config/ara/" ] || ARA_DIRECTORY="-v $HOME/.config/ara/:/home/developer/.ara/"
 
@@ -16,4 +20,5 @@ docker run -it --rm $ENV_FILE $ARA_DIRECTORY\
 	-v $HOME/.env:/home/developer/.env:ro \
 	-v $(pwd):/home/developer/config \
 	nouchka/ansible:$VERSION \
-	$EXECUTABLE -i hosts "$@"
+	$EXECUTABLE $INVENTORY "$@"
+
