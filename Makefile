@@ -46,22 +46,24 @@ symbolinks_test:
 	cd test/ && ../bin/ansible-playbook --check test.yml
 	cd bin/ && rm -rf ansible-playbook && rm -rf ansible-galaxy
 
-build-version:
-	@chmod +x ./hooks/build
-	DOCKER_TAG=$(VERSION) IMAGE_NAME=$(DOCKER_NAMESPACE)/$(DOCKER_IMAGE):$(VERSION) ./hooks/build
-
-.PHONY: build
-build:
-	$(MAKE) -s build-version VERSION=latest
-	$(foreach version,$(VERSIONS), $(MAKE) -s build-version VERSION=$(version);)
-
-.PHONY: test
-test:
-	docker-compose -f docker-compose.test.yml up
-
 install:
 	install bin/ansible $(prefix)/bin/ansible
 	ln -sfn $(prefix)/bin/ansible $(prefix)/bin/ansible-playbook
 	ln -sfn $(prefix)/bin/ansible $(prefix)/bin/ansible-galaxy
 	install bin/ansible-vault $(prefix)/bin/ansible-vault
 	ln -sfn $(prefix)/bin/ansible-vault $(prefix)/bin/ansible-lint
+
+build-latest:
+	$(MAKE) -s build-version VERSION=latest
+
+build-version:
+	@chmod +x ./hooks/build
+	DOCKER_TAG=$(VERSION) IMAGE_NAME=$(DOCKER_NAMESPACE)/$(DOCKER_IMAGE):$(VERSION) ./hooks/build
+
+.PHONY: build
+build: build-latest
+	$(foreach version,$(VERSIONS), $(MAKE) -s build-version VERSION=$(version);)
+
+.PHONY: test
+test:
+	docker-compose -f docker-compose.test.yml up
