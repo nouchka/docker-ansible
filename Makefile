@@ -64,6 +64,12 @@ build-version:
 build: build-latest
 	$(foreach version,$(VERSIONS), $(MAKE) -s build-version VERSION=$(version);)
 
+version:
+	docker run --rm $(DOCKER_NAMESPACE)/$(DOCKER_IMAGE):$(VERSION) dpkg-query --showformat='$${Version} ' --show $(DOCKER_IMAGE)
+
+versions:
+	$(foreach version,$(VERSIONS), $(MAKE) -s version VERSION=$(version);)
+
 .PHONY: test
 test:
 	docker-compose -f docker-compose.test.yml up
