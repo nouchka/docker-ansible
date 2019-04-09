@@ -15,10 +15,10 @@ if [ "$VERSION" == "" ] || [ ! "$VERSION" ]; then
 fi
 
 docker run -it --rm $ENV_FILE $ARA_DIRECTORY\
+	-v $SSH_AUTH_SOCK:/ssh-agent --env SSH_AUTH_SOCK=/ssh-agent \
 	-v $HOME/.ssh/:/home/developer/.ssh/ \
 	-v $HOME/.ansible/:/etc/ansible/ \
 	-v $HOME/.env:/home/developer/.env:ro \
 	-v $(pwd):/home/developer/config \
 	nouchka/ansible:$VERSION \
 	$EXECUTABLE $INVENTORY "$@"
-
