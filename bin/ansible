@@ -5,7 +5,8 @@ if [ -f "hosts" ]; then
 else
 	INVENTORY=""
 fi
-[ ! -f "$HOME/.env" ] || ENV_FILE="--env-file $HOME/.env"
+[ ! -f "$HOME/.env" ] || ENV_FILE_GLOBAL="--env-file $HOME/.env"
+[ ! -f "$(pwd)/.env" ] || ENV_FILE="--env-file $(pwd)/.env"
 [ ! -d "$HOME/.config/ara/" ] || ARA_DIRECTORY="-v $HOME/.config/ara/:/home/developer/.ara/"
 
 EXECUTABLE=$(basename $0| sed 's/[0-9*.]//g')
@@ -14,7 +15,7 @@ if [ "$VERSION" == "" ] || [ ! "$VERSION" ]; then
 	VERSION="latest"
 fi
 
-docker run -it --rm $ENV_FILE $ARA_DIRECTORY\
+docker run -it --rm $ENV_FILE_GLOBAL $ENV_FILE $ARA_DIRECTORY\
 	-v $SSH_AUTH_SOCK:/ssh-agent --env SSH_AUTH_SOCK=/ssh-agent \
 	-v $HOME/.ssh/:/home/developer/.ssh/ \
 	-v $HOME/.ansible/:/etc/ansible/ \
