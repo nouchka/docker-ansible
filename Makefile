@@ -12,8 +12,8 @@ prefix = /usr/local
 
 .DEFAULT_GOAL := build
 
-VERSIONS=2.7 2.6 2.5 2.4
-DEBVERSIONS=2.6
+VERSIONS=2.8 2.7 2.6 2.5 2.4
+DEBVERSIONS=2.8 2.7 2.6
 
 deb:
 	mkdir -p build/
@@ -73,3 +73,7 @@ versions:
 .PHONY: test
 test:
 	docker-compose -f docker-compose.test.yml up
+
+.PHONY: clean
+clean:
+	$(foreach version,$(VERSIONS), docker rmi $(DOCKER_NAMESPACE)/$(DOCKER_IMAGE):$(version);)

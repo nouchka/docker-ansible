@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-LATEST_VERSION="2.7"
+LATEST_VERSION="2.8"
 
 if [ "$DOCKER_TAG" = "latest" ]; then
 	ANSIBLEVERSION=$LATEST_VERSION
@@ -8,7 +8,9 @@ else
 	ANSIBLEVERSION=$DOCKER_TAG
 fi
 
-if [ "$ANSIBLEVERSION" = "2.7" ]; then
+if [ "$ANSIBLEVERSION" = "2.8" ]; then
+	BASE_IMAGE=stretch
+elif [ "$ANSIBLEVERSION" = "2.7" ]; then
 	BASE_IMAGE=stretch
 else
 	BASE_IMAGE=jessie
