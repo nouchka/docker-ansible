@@ -1,10 +1,10 @@
-ARG  BASE_IMAGE=jessie
+ARG  BASE_IMAGE=stretch
 FROM debian:${BASE_IMAGE}
 LABEL maintainer="Jean-Avit Promis docker@katagena.com"
 LABEL org.label-schema.vcs-url="https://github.com/nouchka/docker-ansible"
 
 ARG DOCKER_TAG=latest
-ARG ANSIBLEVERSION=2.6
+ARG ANSIBLEVERSION=2.8
 ## MINOR_TAG=2.8.0-1ppa~trusty 2.7.10-1ppa~trusty 2.6.16-1ppa~trusty 2.5.15-1ppa~trusty 2.4.6.0-1ppa~trusty
 LABEL version="${DOCKER_TAG}"
 
