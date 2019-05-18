@@ -8,13 +8,7 @@ else
 	ANSIBLEVERSION=$DOCKER_TAG
 fi
 
-if [ "$ANSIBLEVERSION" = "2.8" ]; then
-	BASE_IMAGE=stretch
-elif [ "$ANSIBLEVERSION" = "2.7" ]; then
-	BASE_IMAGE=stretch
-else
-	BASE_IMAGE=jessie
-fi
+BASE_IMAGE=stretch
 
 docker build -t ${IMAGE_NAME} \
 	--build-arg=BASE_IMAGE=$BASE_IMAGE \
