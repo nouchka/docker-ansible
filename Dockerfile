@@ -29,6 +29,7 @@ RUN export uid=1000 gid=1000 && \
 	pip install boto>=2 && \
 	pip install ansible-lint>=1 && \
 	pip install ara>=1 && \
+	pip install github3.py>=1 && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /home/developer/config/
