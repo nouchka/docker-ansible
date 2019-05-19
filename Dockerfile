@@ -5,7 +5,7 @@ LABEL org.label-schema.vcs-url="https://github.com/nouchka/docker-ansible"
 
 ARG DOCKER_TAG=latest
 ARG ANSIBLEVERSION=2.8
-## MINOR_TAG=2.8.0-1ppa~trusty 2.7.10-1ppa~trusty 2.6.16-1ppa~trusty 2.5.15-1ppa~trusty 2.4.6.0-1ppa~trusty
+## LATEST_RELEASE=v2.2.1.0-0.3.rc3
 LABEL version="${DOCKER_TAG}"
 
 ENV DEBIAN_FRONTEND=noninteractive
