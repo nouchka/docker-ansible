@@ -12,8 +12,9 @@ prefix = /usr/local
 
 .DEFAULT_GOAL := build
 
-VERSIONS=2.8 2.7 2.6 2.5 2.4
-DEBVERSIONS=2.8 2.7 2.6
+## https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html
+VERSIONS=2.9 2.8 2.7
+DEBVERSIONS=2.9 2.8 2.7
 
 deb:
 	mkdir -p build/

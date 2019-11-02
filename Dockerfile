@@ -4,9 +4,9 @@ LABEL maintainer="Jean-Avit Promis docker@katagena.com"
 LABEL org.label-schema.vcs-url="https://github.com/nouchka/docker-ansible"
 
 ARG DOCKER_TAG=latest
-ARG ANSIBLEVERSION=2.8
-## MINOR_TAGS=2.8.4-1ppa~trusty 2.7.13-1ppa~trusty 2.6.19-1ppa~trusty 2.5.15-1ppa~trusty 2.4.6.0-1ppa~trusty
-## LATEST_RELEASE=v2.2.1.0-0.3.rc3
+ARG ANSIBLEVERSION=2.9
+## MINOR_TAGS=2.9.0-1ppa~bionic 2.8.6-1ppa~bionic 2.7.14-1ppa~bionic
+## LATEST_RELEASE=v2.9.0
 LABEL version="${DOCKER_TAG}"
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -20,10 +20,10 @@ RUN export uid=1000 gid=1000 && \
 	chown ${uid}:${gid} -R /home/developer && \
 	apt-get update --fix-missing && \
 	apt-get install -y -q --no-install-recommends gnupg=* dirmngr=* && \
-	echo "deb http://ppa.launchpad.net/ansible/ansible-${ANSIBLEVERSION}/ubuntu trusty main" >> /etc/apt/sources.list && \
+	echo "deb http://ppa.launchpad.net/ansible/ansible-${ANSIBLEVERSION}/ubuntu bionic main" >> /etc/apt/sources.list && \
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys "${APT_KEY}" && \
 	apt-get update --fix-missing && \
-	apt-get install -y -q --no-install-recommends ansible=${ANSIBLEVERSION}.* python=* rsync=* vim=* openssh-client=* gcc=* python-dev=* libffi-dev=* libssl-dev=* && \
+	apt-get install -y -q --no-install-recommends ansible python=* rsync=* vim=* openssh-client=* gcc=* python-dev=* libffi-dev=* libssl-dev=* && \
 	easy_install pip && \
 	pip install 'dopy>=0.3.5,<=0.3.5' && \
 	pip install google-auth>=1.3.0 && \
