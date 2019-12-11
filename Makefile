@@ -24,6 +24,9 @@ deb:
 	$(foreach version,$(DEBVERSIONS), cp bin/ansible-vault build/usr/sbin/ansible-vault$(version);)
 	$(foreach version,$(DEBVERSIONS), cp bin/ansible-vault build/usr/sbin/ansible-lint$(version);)
 
+run:
+	./bin/$(DOCKER_IMAGE) --version
+
 install:
 	install bin/ansible $(prefix)/bin/ansible
 	ln -sfn $(prefix)/bin/ansible $(prefix)/bin/ansible-playbook
