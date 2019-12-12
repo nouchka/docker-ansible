@@ -28,7 +28,7 @@ RUN export uid=1000 gid=1000 && \
 	pip install 'dopy>=0.3.5,<=0.3.5' && \
 	pip install google-auth>=1.3.0 && \
 	pip install boto>=2 && \
-        pip install boto3>=3 && \
+	pip install boto3>=3 && \
 	pip install ansible-lint>=1 && \
 	pip install ara>=1 && \
 	pip install github3.py>=1 && \
@@ -39,4 +39,3 @@ WORKDIR /home/developer/config/
 USER developer
 
 CMD [ "ansible-playbook", "--version" ]
-
