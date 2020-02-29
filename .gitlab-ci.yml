@@ -29,5 +29,6 @@ build:
   services:
     - docker:dind
   script:
+    - apk add --update make
     - make build
     - make check|grep -v 'warning'
