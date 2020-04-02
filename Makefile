@@ -17,6 +17,7 @@ deb:
 	cp -Rf bin/* build/usr/sbin/
 	cp bin/ansible build/usr/sbin/ansible-playbook
 	cp bin/ansible build/usr/sbin/ansible-galaxy
+	cp bin/ansible build/usr/sbin/ansible-inventory
 	cp bin/ansible-vault build/usr/sbin/ansible-lint
 	$(foreach version,$(DEBVERSIONS), cp bin/ansible build/usr/sbin/ansible$(version);)
 	$(foreach version,$(DEBVERSIONS), cp bin/ansible build/usr/sbin/ansible-playbook$(version);)
