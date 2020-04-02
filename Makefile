@@ -32,5 +32,6 @@ install:
 	install bin/ansible $(prefix)/bin/ansible
 	ln -sfn $(prefix)/bin/ansible $(prefix)/bin/ansible-playbook
 	ln -sfn $(prefix)/bin/ansible $(prefix)/bin/ansible-galaxy
+	ln -sfn $(prefix)/bin/ansible $(prefix)/bin/ansible-inventory
 	install bin/ansible-vault $(prefix)/bin/ansible-vault
 	ln -sfn $(prefix)/bin/ansible-vault $(prefix)/bin/ansible-lint
