@@ -17,11 +17,8 @@ code_quality:
     - docker run --env SOURCE_CODE="$(pwd)" -v "$(pwd):/code" -v /var/run/docker.sock:/var/run/docker.sock "registry.gitlab.com/gitlab-org/security-products/codequality:$SP_VERSION" /code
   artifacts:
     paths: [gl-code-quality-report.json]
-  only:
-    - branches
-  except:
-    variables:
-      - $CODE_QUALITY_DISABLED
+  rules:
+    - if: $CI_COMMIT_BRANCH == "master" && $CODE_QUALITY_DISABLED != "true"
 
 build:
   stage: build
