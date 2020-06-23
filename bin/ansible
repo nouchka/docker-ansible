@@ -2,6 +2,8 @@
 
 if [ -f "hosts" ]; then
 	INVENTORY=" -i hosts"
+elif [ -d "inventory/" ]; then
+	INVENTORY=" -i inventory/"
 else
 	INVENTORY=""
 fi

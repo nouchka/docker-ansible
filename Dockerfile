@@ -5,13 +5,13 @@ LABEL org.label-schema.vcs-url="https://github.com/nouchka/docker-ansible"
 
 ARG DOCKER_TAG=latest
 ARG ANSIBLEVERSION=2.9
-## MINOR_TAGS=2.9.5-1ppa~bionic 2.8.8-1ppa~bionic 2.7.16-1ppa~bionic
+## MINOR_TAGS=2.9.10-1ppa~bionic 2.9.10-1ppa~bionic 2.8.12-1ppa~bionic 2.7.18-1ppa~bionic 
 ## LATEST_RELEASE=v2.9.6
 LABEL version="${DOCKER_TAG}"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-ARG APT_KEY=93C4A3FD7BB9C367
+ARG APT_KEY=0x93C4A3FD7BB9C367
 
 RUN export uid=1000 gid=1000 && \
 	mkdir -p /home/developer && \
@@ -19,9 +19,10 @@ RUN export uid=1000 gid=1000 && \
 	echo "developer:x:${uid}:" >> /etc/group && \
 	chown ${uid}:${gid} -R /home/developer && \
 	apt-get update --fix-missing && \
-	apt-get install -y -q --no-install-recommends gnupg=* dirmngr=* && \
+	apt-get install -y -q --no-install-recommends gnupg=* dirmngr=* curl=* && \
 	echo "deb http://ppa.launchpad.net/ansible/ansible-${ANSIBLEVERSION}/ubuntu bionic main" >> /etc/apt/sources.list && \
-	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys "${APT_KEY}" && \
+##	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys "${APT_KEY}" && \
+	curl -sL "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x93C4A3FD7BB9C367" | apt-key add && \
 	apt-get update --fix-missing && \
 	apt-get install -y -q --no-install-recommends ansible python=* rsync=* vim=* openssh-client=* gcc=* python-dev=* libffi-dev=* libssl-dev=* && \
 	easy_install pip && \
