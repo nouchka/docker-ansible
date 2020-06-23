@@ -7,7 +7,7 @@ before_install:
 
 script:
   - make test
-  - make push-deb
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then make push-deb; fi
 
 notifications:
   email: docker@katagena.com
