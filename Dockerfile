@@ -24,8 +24,8 @@ RUN export uid=1000 gid=1000 && \
 ##	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys "${APT_KEY}" && \
 	curl -sL "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x93C4A3FD7BB9C367" | apt-key add && \
 	apt-get update --fix-missing && \
-	apt-get install -y -q --no-install-recommends ansible python=* rsync=* vim=* openssh-client=* python-pip=* && \
-	pip install wheel && \
+	apt-get install -y -q --no-install-recommends ansible=* python=* rsync=* vim=* openssh-client=* python-pip=* && \
+	pip install wheel>=0.18 && \
 	pip install dopy>=0.3.5 && \
 	pip install google-auth>=1.3.0 && \
 	pip install boto>=2 && \
