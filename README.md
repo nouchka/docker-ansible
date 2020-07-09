@@ -1,11 +1,12 @@
 # docker-ansible
 
-[![Docker Hub repository](http://dockeri.co/image/nouchka/ansible)](https://registry.hub.docker.com/u/nouchka/ansible/)
-
-[![](https://images.microbadger.com/badges/image/nouchka/ansible.svg)](https://microbadger.com/images/nouchka/ansible "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/nouchka/ansible.svg)](https://microbadger.com/images/nouchka/ansible "Get your own version badge on microbadger.com")
+[![Docker pull](https://img.shields.io/docker/pulls/nouchka/ansible)](https://hub.docker.com/r/nouchka/ansible/)
+[![Docker stars](https://img.shields.io/docker/stars/nouchka/ansible)](https://hub.docker.com/r/nouchka/ansible/)
 [![Docker Automated buil](https://img.shields.io/docker/automated/nouchka/ansible.svg)](https://hub.docker.com/r/nouchka/ansible/)
-[![Build Status](https://travis-ci.org/nouchka/docker-ansible.svg?branch=master)](https://travis-ci.org/nouchka/docker-ansible)
+[![Build Status](https://img.shields.io/travis/nouchka/docker-ansible/master)](https://travis-ci.org/nouchka/docker-ansible)
+[![Docker size](https://img.shields.io/docker/image-size/nouchka/ansible/latest)](https://hub.docker.com/r/nouchka/ansible/)
+[![Docker layers](https://img.shields.io/microbadger/layers/nouchka/ansible/latest)](https://hub.docker.com/r/nouchka/ansible/)
+[![Codacy grade](https://img.shields.io/codacy/grade/6346121fdf434dc59ac4b50269189c9d)](https://hub.docker.com/r/nouchka/ansible/)
 
 # Versions
 
@@ -27,7 +28,3 @@ or use with docker compose:
 # Todo
 
 * Migrate docker-compose file format to version 3
-
-# Donate
-
-Bitcoin Address: 15NVMBpZJTvkefwfsMAFA3YhyiJ5D2zd3R
