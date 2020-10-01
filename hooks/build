@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-LATEST_VERSION="2.9"
+LATEST_VERSION="2.10"
 
 if [ "$DOCKER_TAG" = "latest" ]; then
 	ANSIBLEVERSION=$LATEST_VERSION
