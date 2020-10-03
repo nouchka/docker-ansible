@@ -19,23 +19,16 @@ RUN export uid=1000 gid=1000 && \
 	echo "developer:x:${uid}:" >> /etc/group && \
 	chown ${uid}:${gid} -R /home/developer && \
 	apt-get update --fix-missing && \
-	apt-get install -y -q --no-install-recommends gnupg=* dirmngr=* curl=* && \
-	echo "deb http://ppa.launchpad.net/ansible/ansible-${ANSIBLEVERSION}/ubuntu bionic main" >> /etc/apt/sources.list && \
-##	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys "${APT_KEY}" && \
-	curl -sL "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x93C4A3FD7BB9C367" | apt-key add && \
-	apt-get update --fix-missing && \
-	apt-get install -y -q --no-install-recommends ansible=* python=* rsync=* vim=* openssh-client=* python-pip=* && \
-	pip install wheel>=0.18 && \
-	pip install google-auth>=1.3.0 && \
-	pip install boto>=2 && \
-	pip install boto3>=3 && \
-	pip install ansible-lint>=1 && \
-	pip install github3.py>=1 && \
-	pip install netaddr>=0.7 && \
+	apt-get install -y -q --no-install-recommends python3=* rsync=* vim=* openssh-client=* python3-pip=* python3-setuptools=* && \
+	pip3 install wheel>=0.18 && \
+	pip3 install ansible==${ANSIBLEVERSION}.* && \
+	pip3 install google-auth>=1.3.0 && \
+	pip3 install boto>=2 && \
+	pip3 install boto3>=3 && \
+	pip3 install ansible-lint>=1 && \
+	pip3 install github3.py>=1 && \
+	pip3 install ara>=1 && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-##RUN pip install ara>=1
-##RUN pip install dopy>=0.3.5 && \
 
 WORKDIR /home/developer/config/
 USER developer
