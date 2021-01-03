@@ -27,6 +27,7 @@ RUN export uid=1000 gid=1000 && \
 	pip3 install boto3>=3 && \
 	pip3 install ansible-lint>=1 && \
 	pip3 install github3.py>=1 && \
+	pip3 install hvac && \
 	pip3 install ara>=1 && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
