@@ -1,4 +1,4 @@
-ARG  BASE_IMAGE=stretch
+ARG  BASE_IMAGE=bullseye-slim
 FROM debian:${BASE_IMAGE}
 LABEL maintainer="Jean-Avit Promis docker@katagena.com"
 LABEL org.label-schema.vcs-url="https://github.com/nouchka/docker-ansible"
@@ -6,7 +6,7 @@ LABEL org.label-schema.vcs-url="https://github.com/nouchka/docker-ansible"
 ARG DOCKER_TAG=latest
 ARG ANSIBLEVERSION=2.10
 ## MINOR_TAGS=2.9.10-1ppa~bionic 2.9.10-1ppa~bionic 2.8.12-1ppa~bionic 2.7.18-1ppa~bionic 
-## LATEST_RELEASE=v2.10.4
+## LATEST_RELEASE=v2.10.5
 LABEL version="${DOCKER_TAG}"
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -19,8 +19,8 @@ RUN export uid=1000 gid=1000 && \
 	echo "developer:x:${uid}:" >> /etc/group && \
 	chown ${uid}:${gid} -R /home/developer && \
 	apt-get update --fix-missing && \
-	apt-get install -y -q --no-install-recommends python3=* rsync=* vim=* openssh-client=* python3-pip=* python3-setuptools=* && \
-	pip3 install wheel>=0.18 && \
+	apt-get install -y -q --no-install-recommends python3=* rustc=* rsync=* vim=* openssh-client=* python3-pip=* python3-setuptools=* && \
+##	pip3 install wheel>=0.18 && \
 	pip3 install ansible==${ANSIBLEVERSION}.* && \
 	pip3 install google-auth>=1.3.0 && \
 	pip3 install boto>=2 && \
