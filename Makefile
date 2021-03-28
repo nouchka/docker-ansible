@@ -8,6 +8,7 @@ PACKAGE_VERSION=0.1
 DEBVERSIONS=2.10 2.9 2.8
 
 include Makefile.package
+prefix = /usr/local
 
 check-version:
 	docker run --rm $(DOCKER_NAMESPACE)/$(DOCKER_IMAGE):$(VERSION) ansible --version|grep "^ansible "|awk '{print $$2,""}'| tr -d '\n'
