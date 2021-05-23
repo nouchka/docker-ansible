@@ -1,17 +1,17 @@
 DOCKER_IMAGE=ansible
 ## https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html
-VERSIONS=2.10 2.9 2.8
+VERSIONS=4 2.10 2.9
 
 include Makefile.docker
 
 PACKAGE_VERSION=0.1
-DEBVERSIONS=2.10 2.9 2.8
+DEBVERSIONS=4 2.10 2.9
 
 include Makefile.package
 prefix = /usr/local
 
 check-version:
-	docker run --rm $(DOCKER_NAMESPACE)/$(DOCKER_IMAGE):$(VERSION) ansible --version|grep "^ansible "|awk '{print $$2,""}'| tr -d '\n'
+	docker run --rm $(DOCKER_NAMESPACE)/$(DOCKER_IMAGE):$(VERSION) ansible --version|grep "^ansible "|sed 's/\[core //'|sed 's/\]//'|awk '{print $$2,""}'| tr -d '\n'
 
 deb:
 	mkdir -p build/usr/sbin/

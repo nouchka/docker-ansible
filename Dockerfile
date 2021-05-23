@@ -4,8 +4,8 @@ LABEL maintainer="Jean-Avit Promis docker@katagena.com"
 LABEL org.label-schema.vcs-url="https://github.com/nouchka/docker-ansible"
 
 ARG DOCKER_TAG=latest
-ARG ANSIBLEVERSION=2.10
-## MINOR_TAGS=2.10.7 2.10.7 2.9.19 2.8.19 
+ARG ANSIBLEVERSION=4
+## MINOR_TAGS=2.11.0 2.11.0 2.10.9 2.9.21 
 ## LATEST_RELEASE=v2.11.0b3
 LABEL version="${DOCKER_TAG}"
 
@@ -30,6 +30,7 @@ RUN export uid=1000 gid=1000 && \
 	pip3 install ansible-modules-hashivault>=1 && \
 	pip3 install hvac && \
 	pip3 install ara>=1 && \
+	pip3 install PyMySQL>=1 && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /home/developer/config/
