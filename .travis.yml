@@ -4,6 +4,7 @@ services:
 
 before_install:
   - gem install fpm package_cloud
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 script:
   - make test
