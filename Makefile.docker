@@ -36,7 +36,7 @@ push-versions:
 	$(foreach version,$(VERSIONS), $(MAKE) -s push-version VERSION=$(version);)
 
 .PHONY: push
-push: push-latest push-versions
+push: push-versions push-latest
 
 .PHONY: check
 check:

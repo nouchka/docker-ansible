@@ -5,7 +5,7 @@ VERSIONS=4 2.10 2.9
 include Makefile.docker
 
 PACKAGE_VERSION=0.1
-DEBVERSIONS=4 2.10 2.9
+DEBVERSIONS=2.9 2.10 4
 
 include Makefile.package
 prefix = /usr/local
