@@ -29,7 +29,7 @@ push-beta:
 
 .PHONY: push-version
 push-version:
-	echo docker push -t $(DOCKER_NAMESPACE)/$(DOCKER_IMAGE):$(VERSION)
+	docker push $(DOCKER_NAMESPACE)/$(DOCKER_IMAGE):$(VERSION)
 
 .PHONY: push-versions
 push-versions:

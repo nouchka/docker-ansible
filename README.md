@@ -1,6 +1,5 @@
 # docker-ansible
 [![Docker pull](https://img.shields.io/docker/pulls/nouchka/ansible)](https://hub.docker.com/r/nouchka/ansible/)
-
 [![Docker stars](https://img.shields.io/docker/stars/nouchka/ansible)](https://hub.docker.com/r/nouchka/ansible/)
 [![Docker Automated buil](https://img.shields.io/docker/automated/nouchka/ansible.svg)](https://hub.docker.com/r/nouchka/ansible/)
 [![Build Status](https://img.shields.io/travis/com/nouchka/docker-ansible/master)](https://travis-ci.com/github/nouchka/docker-ansible)
