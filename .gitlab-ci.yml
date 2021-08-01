@@ -12,4 +12,6 @@ build:
     - apk add --update make
     - apk add --update bash
     - make build
+    - docker login -u nouchka -p $DOCKERHUB_TOKEN
+    - make push
     - make check|grep -v 'warning'
