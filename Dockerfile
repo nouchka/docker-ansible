@@ -3,8 +3,7 @@ FROM debian:${BASE_IMAGE}
 LABEL maintainer="Jean-Avit Promis docker@katagena.com"
 LABEL org.label-schema.vcs-url="https://github.com/nouchka/docker-ansible"
 
-ARG DOCKER_TAG=latest
-ARG ANSIBLEVERSION=4
+ARG VERSION=4
 ## MINOR_TAGS=2.11.7 2.11.7 2.10.16 2.9.27 
 ## LATEST_RELEASE=v2.11.6
 LABEL version="${DOCKER_TAG}"
@@ -21,7 +20,7 @@ RUN export uid=1000 gid=1000 && \
 	apt-get update --fix-missing && \
 	apt-get install -y -q --no-install-recommends python3=* rustc=* rsync=* vim=* openssh-client=* python3-pip=* python3-setuptools=* && \
 ##	pip3 install wheel>=0.18 && \
-	pip3 install ansible==${ANSIBLEVERSION}.* && \
+	pip3 install ansible==${VERSION}.* && \
 	pip3 install google-auth>=1.3.0 && \
 	pip3 install boto>=2 && \
 	pip3 install boto3>=3 && \
