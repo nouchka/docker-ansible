@@ -56,6 +56,7 @@ update-version:
 .PHONY: update-dockerfile
 update-dockerfile: update-version
 	sed -i '/MINOR_TAGS/c\## MINOR_TAGS=$(shell cat VERSION)' Dockerfile
+	sed -i '/LATEST_RELEASE/c\## LATEST_RELEASE=$(shell make -s check-version VERSION=latest)' Dockerfile
 
 .PHONY: test
 test:

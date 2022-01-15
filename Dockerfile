@@ -1,7 +1,5 @@
 ARG  BASE_IMAGE=bullseye-slim
 FROM debian:${BASE_IMAGE}
-LABEL maintainer="Jean-Avit Promis docker@katagena.com"
-LABEL org.label-schema.vcs-url="https://github.com/nouchka/docker-ansible"
 
 ARG VERSION=4
 ## MINOR_TAGS=2.11.7 2.11.7 2.10.16 2.9.27 
