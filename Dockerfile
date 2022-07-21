@@ -10,6 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 ARG APT_KEY=0x93C4A3FD7BB9C367
 
+# hadolint ignore=DL3013
 RUN export uid=1000 gid=1000 && \
 	mkdir -p /home/developer && \
 	echo "developer:x:${uid}:${gid}:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
@@ -17,17 +18,16 @@ RUN export uid=1000 gid=1000 && \
 	chown ${uid}:${gid} -R /home/developer && \
 	apt-get update --fix-missing && \
 	apt-get install -y -q --no-install-recommends python3=* rustc=* rsync=* vim=* openssh-client=* python3-pip=* python3-setuptools=* && \
-##	pip3 install wheel>=0.18 && \
-	pip3 install ansible==${VERSION}.* && \
-	pip3 install google-auth>=1.3.0 && \
-	pip3 install boto>=2 && \
-	pip3 install boto3>=3 && \
-	pip3 install ansible-lint>=1 && \
-	pip3 install github3.py>=1 && \
-	pip3 install ansible-modules-hashivault>=1 && \
-	pip3 install hvac && \
-	pip3 install ara>=1 && \
-	pip3 install PyMySQL>=1 && \
+	pip3 install --no-cache-dir ansible==${VERSION}.* && \
+	pip3 install --no-cache-dir google-auth>=1.3.0 && \
+	pip3 install --no-cache-dir boto>=2 && \
+	pip3 install --no-cache-dir boto3>=3 && \
+	pip3 install --no-cache-dir ansible-lint>=1 && \
+	pip3 install --no-cache-dir github3.py>=1 && \
+	pip3 install --no-cache-dir ansible-modules-hashivault>=1 && \
+	pip3 install --no-cache-dir hvac>=0.11 && \
+	pip3 install --no-cache-dir ara>=1 && \
+	pip3 install --no-cache-dir PyMySQL>=1 && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /home/developer/config/
