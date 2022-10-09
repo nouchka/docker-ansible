@@ -27,6 +27,7 @@ RUN export uid=1000 gid=1000 && \
 	pip3 install --no-cache-dir ansible-modules-hashivault>=1 && \
 	pip3 install --no-cache-dir hvac>=0.11 && \
 	pip3 install --no-cache-dir ara>=1 && \
+	pip3 install --no-cache-dir python-gitlab>=3 && \
 	pip3 install --no-cache-dir PyMySQL>=1 && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
