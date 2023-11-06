@@ -17,7 +17,7 @@ RUN export uid=1000 gid=1000 && \
 	echo "developer:x:${uid}:" >> /etc/group && \
 	chown ${uid}:${gid} -R /home/developer && \
 	apt-get update --fix-missing && \
-	apt-get install -y -q --no-install-recommends python3=* rustc=* rsync=* vim=* openssh-client=* python3-pip=* python3-setuptools=* python-is-python3=* && \
+	apt-get install -y -q --no-install-recommends python3=* rustc=* rsync=* curl=* vim=* openssh-client=* python3-pip=* python3-setuptools=* python-is-python3=* && \
 	pip3 install --no-cache-dir ansible==${VERSION}.* && \
 	pip3 install --no-cache-dir google-auth>=1.3.0 && \
 	pip3 install --no-cache-dir boto>=2 && \
