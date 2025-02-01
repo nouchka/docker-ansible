@@ -1,9 +1,9 @@
-ARG  BASE_IMAGE=bullseye-slim
+ARG  BASE_IMAGE=bookworm-slim
 FROM debian:${BASE_IMAGE}
 
-ARG VERSION=8
-## MINOR_TAGS=2.15.3 2.15.3 2.14.9 2.13.11 
-## LATEST_RELEASE=2.15.3 
+ARG VERSION=11
+## MINOR_TAGS=2.18.2 2.18.2 2.17.8 2.16.14 
+## LATEST_RELEASE=2.18.2 
 LABEL version="${DOCKER_TAG}"
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -18,17 +18,17 @@ RUN export uid=1000 gid=1000 && \
 	chown ${uid}:${gid} -R /home/developer && \
 	apt-get update --fix-missing && \
 	apt-get install -y -q --no-install-recommends python3=* rustc=* rsync=* curl=* vim=* openssh-client=* python3-pip=* python3-setuptools=* python-is-python3=* && \
-	pip3 install --no-cache-dir ansible==${VERSION}.* && \
-	pip3 install --no-cache-dir google-auth>=1.3.0 && \
-	pip3 install --no-cache-dir boto>=2 && \
-	pip3 install --no-cache-dir boto3>=3 && \
-	pip3 install --no-cache-dir ansible-lint>=1 && \
-	pip3 install --no-cache-dir github3.py>=1 && \
-	pip3 install --no-cache-dir ansible-modules-hashivault>=1 && \
-	pip3 install --no-cache-dir hvac>=0.11 && \
-	pip3 install --no-cache-dir ara>=1 && \
-	pip3 install --no-cache-dir python-gitlab>=3 && \
-	pip3 install --no-cache-dir PyMySQL>=1 && \
+	pip3 install --no-cache-dir --break-system-packages ansible==${VERSION}.* && \
+	pip3 install --no-cache-dir --break-system-packages google-auth>=1.3.0 && \
+	pip3 install --no-cache-dir --break-system-packages boto>=2 && \
+	pip3 install --no-cache-dir --break-system-packages boto3>=3 && \
+	pip3 install --no-cache-dir --break-system-packages ansible-lint>=1 && \
+	pip3 install --no-cache-dir --break-system-packages github3.py>=1 && \
+	pip3 install --no-cache-dir --break-system-packages ansible-modules-hashivault>=1 && \
+	pip3 install --no-cache-dir --break-system-packages hvac>=0.11 && \
+	pip3 install --no-cache-dir --break-system-packages ara>=1 && \
+	pip3 install --no-cache-dir --break-system-packages python-gitlab>=3 && \
+	pip3 install --no-cache-dir --break-system-packages PyMySQL>=1 && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /home/developer/config/
