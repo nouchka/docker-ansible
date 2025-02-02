@@ -1,2 +1,4 @@
-sut:
-  build: .
+services:
+  test:
+    build: .
+    image: nouchka/ansible
