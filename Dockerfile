@@ -2,7 +2,7 @@ ARG  BASE_IMAGE=bookworm-slim
 FROM debian:${BASE_IMAGE}
 
 ARG VERSION=11
-## MINOR_TAGS=2.18.2 2.18.2 2.17.8 2.16.14 
+## MINOR_TAGS=2.18.2 2.18.2 
 ## LATEST_RELEASE=2.18.2 
 LABEL version="${DOCKER_TAG}"
 
@@ -17,7 +17,7 @@ RUN export uid=1000 gid=1000 && \
 	echo "developer:x:${uid}:" >> /etc/group && \
 	chown ${uid}:${gid} -R /home/developer && \
 	apt-get update --fix-missing && \
-	apt-get install -y -q --no-install-recommends python3=* rustc=* rsync=* curl=* vim=* openssh-client=* python3-pip=* python3-setuptools=* python-is-python3=* && \
+	apt-get install -y -q --no-install-recommends python3=* rustc=* rsync=* git=* curl=* vim=* openssh-client=* python3-pip=* python3-setuptools=* python-is-python3=* && \
 	pip3 install --no-cache-dir --break-system-packages ansible==${VERSION}.* && \
 	pip3 install --no-cache-dir --break-system-packages google-auth>=1.3.0 && \
 	pip3 install --no-cache-dir --break-system-packages boto>=2 && \
