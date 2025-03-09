@@ -29,6 +29,8 @@ RUN export uid=1000 gid=1000 && \
 	pip3 install --no-cache-dir --break-system-packages ara>=1 && \
 	pip3 install --no-cache-dir --break-system-packages python-gitlab>=3 && \
 	pip3 install --no-cache-dir --break-system-packages PyMySQL>=1 && \
+	pip3 install --no-cache-dir --break-system-packages cryptography>=3.0 && \
+	pip3 install --no-cache-dir --break-system-packages bcrypt>=4.0 && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /home/developer/config/
