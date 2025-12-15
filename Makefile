@@ -1,11 +1,12 @@
 DOCKER_IMAGE=ansible
 ## https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html
-VERSIONS=11
+## https://pypi.org/project/ansible/#history
+VERSIONS=12
 
 include Makefile.docker
 
 PACKAGE_VERSION=0.1
-DEBVERSIONS=11
+DEBVERSIONS=12
 
 include Makefile.package
 
